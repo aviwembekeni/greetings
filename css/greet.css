@@ -1,0 +1,58 @@
+.center{
+  text-align: center;
+}
+
+.page-content{
+  width: 100%;
+  margin: 5% 20% 5% 20%;
+}
+.selector{
+  margin-top: 15%;
+
+}
+
+.form{
+  width: 100%;
+}
+
+.demo-card-event.mdl-card {
+  width: 50%;
+  height: 256px;
+  background: ORANGE;
+}
+.demo-card-event > .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.demo-card-event > .mdl-card__title {
+  align-items: flex-start;
+}
+.demo-card-event > .mdl-card__title > h4 {
+  margin-top: 0;
+}
+.demo-card-event > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.demo-card-event > .mdl-card__actions > .material-icons {
+  padding-right: 10px;
+}
+.demo-card-event > .mdl-card__title,
+.demo-card-event > .mdl-card__actions,
+.demo-card-event > .mdl-card__actions > .mdl-button {
+  color: #fff;
+}
+
+.text-field{
+   margin: 0 auto;
+   padding-left: 20%;
+}
+
+.mdl-card__title{
+  width: 100%;
+}
+
+.greets{
+  float: left;
+  vertical-align: bottom;
+}

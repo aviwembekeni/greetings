@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/greet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row center">
+              <!-- Title -->
+              <h3 class="center">Greetings</h3>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+
+            </div>
+          </header>
+          <main class="mdl-layout__content">
+            <div class="page-content">
+              <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <h4>Name: </h4>
+                      <input class="mdl-textfield__input" type="text" id="sample3">
+                    </div>
+                  </div>
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <form action="" class="selector">
+                        <input type="radio" name="language" value="english"> English<br>
+                        <input type="radio" name="language" value="afrikaans"> Afrikaans<br>
+                        <input type="radio" name="language" value="isixhosa"> IsiXhosa
+                      </form>
+                    </div>
+                  </div>
+                  <!--<div class="greets">
+                      <h4>Name:
+
+                      </h4>
+                      <form action="#" class="form">
+                        <div class="text-field mdl-js-textfield mdl-textfield--floating-label">
+                          <input class="mdl-textfield__input" type="text" id="sample3">
+                        </div>
+                      </form>
+                      <form action="" class="newLine">
+                        <input type="radio" name="language" value="english"> English<br>
+                        <input type="radio" name="language" value="afrikaans"> Afrikaans<br>
+                        <input type="radio" name="language" value="isixhosa"> IsiXhosa
+                      </form>
+                  </div>
+                  <div class="greetsCounter">
+
+
+                  <div class="noOfGreets">
+
+                  </div>
+                  <div class="button">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent reset-counter">
+                      Reset Counter
+                    </button>
+
+                  </div>
+                </div>-->
+                </div>
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--4-col">
+                    <div class="noOfGreets">
+
+                    </div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--8-col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent reset-counter">
+                      Reset Counter
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mdl-card__actions mdl-card--border">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect greetBtn">
+                    Greet Me
+                  </a>
+                  <div class="mdl-layout-spacer"></div>
+                  <a class="greetingDisp"></a>
+                </div>
+              </div>
+            </div>
+          </main>
+      </div>
+
+    </div>
+  </body>
+  <script src="js/greet.js"></script>
+</html>
