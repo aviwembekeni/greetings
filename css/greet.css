@@ -16,7 +16,7 @@
 }
 
 .demo-card-event.mdl-card {
-  width: 50%;
+  width: 60%;
   height: 256px;
   background: ORANGE;
 }
@@ -55,4 +55,12 @@
 .greets{
   float: left;
   vertical-align: bottom;
+}
+
+@media (max-width: 750px) {
+  .demo-card-event.mdl-card {
+    width: 60%;
+    height: 256px;
+    background: ORANGE;
+  }
 }
