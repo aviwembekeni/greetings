@@ -20,6 +20,8 @@ if (localStorage['namesGreeted']){
 
 }
 
+noOfGreetsDispElem.innerHTML = noOfGreetings;
+
 
 
 function Greet(){
