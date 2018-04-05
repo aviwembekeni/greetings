@@ -25,8 +25,23 @@ if (localStorage['namesGreeted']){
 function Greet(){
    var greetingsNo = 0;
    var greetedNames={};
+   var greetMessage = "";
 
-  function greet(noOfGreets){
+  function greet(name, language){
+      if(language == "english"){
+        greetMessage = "Hello, "+ name;
+      }else if (language == "isixhosa") {
+        greetMessage = "Molo, "+ name;
+      }else if (language == "afrikaans") {
+        greetMessage = "Hallo, "+ name;
+      }
+  }
+
+  function getGreetMessage(){
+    return greetMessage;
+  }
+
+  function updateCounter(noOfGreets){
      greetingsNo = noOfGreets;
   }
 
@@ -44,7 +59,9 @@ function Greet(){
 
 
   return {
-    updateGreets : greet,
+    greetNeighbour : greet,
+    checkgreetMessage : getGreetMessage,
+    updateGreets : updateCounter,
     checkGreets : checkGreetings,
     addGreetedName : updateGreetedNames,
     getGreetedNames : checkGreetedNames
@@ -65,26 +82,16 @@ function greetClicked(){
     namesGreeted[name]= 0;
     }
 
-
       greet.updateGreets(noOfGreetings);
-
-
-
 
     var greetsNo = greet.checkGreets();
     greet.addGreetedName(namesGreeted);
     var greetedNamesObj = greet.getGreetedNames();
 
     var selectedLanguage = checkedRadioBtn.value;
-     if(selectedLanguage == "english"){
-       greetingDispElem.innerHTML = "Hello, "+ name
-     }else if (selectedLanguage == "afrikaans") {
-       greetingDispElem.innerHTML = "Hallo, "+ name
-
-     }else if (selectedLanguage == "isixhosa") {
-       greetingDispElem.innerHTML = "Molo, "+ name;
-     }
-
+    greet.greetNeighbour(name, selectedLanguage);
+    var greetMessage = greet.checkgreetMessage();
+    greetingDispElem.innerHTML = greetMessage;
     namesGreeted = greetedNamesObj;
     noOfGreetings = greetsNo;
     localStorage['noOfGreetings'] = noOfGreetings;
