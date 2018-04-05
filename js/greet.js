@@ -1,4 +1,4 @@
-var nameInputFiled = document.querySelector(".mdl-textfield__input");
+var nameInputFiled = document.querySelector(".input-field");
 var greetingDispElem = document.querySelector(".greetingDisp");
 var greetBtn = document.querySelector(".greetBtn");
 var noOfGreetsDispElem = document.querySelector(".noOfGreets");
