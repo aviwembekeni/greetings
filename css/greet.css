@@ -104,7 +104,7 @@
   vertical-align: bottom;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1200px) {
 
   .demo-card-event.mdl-card {
     width: 100%;
