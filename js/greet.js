@@ -7,16 +7,17 @@ var resetCounterBtn = document.querySelector(".reset-counter");
 var noOfGreetings = 0;
 var namesGreeted = {};
 
-
 if (localStorage['noOfGreetings']){
 
     noOfGreetings = Number(localStorage['noOfGreetings']);
+
 }
 
 if (localStorage['namesGreeted']){
    var retrieved = localStorage.getItem('namesGreeted');
 
     namesGreeted =JSON.parse(retrieved);
+
 }
 
 
@@ -57,11 +58,19 @@ function greetClicked(){
 
   var name = nameInputFiled.value
   var checkedRadioBtn = document.querySelector("input[name='language']:checked");
-  if(checkedRadioBtn != null && name != "" && namesGreeted[name] === undefined){
-   noOfGreetings++;
-   namesGreeted[name]= 0;
+  if(checkedRadioBtn != null && name != ""){
 
-    greet.updateGreets(noOfGreetings);
+  if(namesGreeted[name] === undefined){
+    noOfGreetings++;
+    namesGreeted[name]= 0;
+    }
+
+
+      greet.updateGreets(noOfGreetings);
+
+
+
+
     var greetsNo = greet.checkGreets();
     greet.addGreetedName(namesGreeted);
     var greetedNamesObj = greet.getGreetedNames();
