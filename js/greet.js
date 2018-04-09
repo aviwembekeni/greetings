@@ -4,7 +4,7 @@ var greetBtn = document.querySelector(".greetBtn");
 var noOfGreetsDispElem = document.querySelector(".noOfGreets");
 var resetCounterBtn = document.querySelector(".reset-counter");
 
-var noOfGreetings = 0;
+/*var noOfGreetings = 0;
 var namesGreeted = {};
 
 if (localStorage['noOfGreetings']){
@@ -14,91 +14,78 @@ if (localStorage['noOfGreetings']){
 }
 
 if (localStorage['namesGreeted']){
-   var retrieved = localStorage.getItem('namesGreeted');
 
+    var retrieved = localStorage.getItem('namesGreeted');
     namesGreeted =JSON.parse(retrieved);
 
 }
 
-noOfGreetsDispElem.innerHTML = noOfGreetings;
+noOfGreetsDispElem.innerHTML = noOfGreetings;*/
 
 
+function Greet(peopleGreeted){
+   var noOfGreetings = peopleGreeted? Object.keys(peopleGreeted).length : 0;
+   var namesGreeted = peopleGreeted || {} ;
+   //var greetMessage = "";
 
-function Greet(){
-   var greetingsNo = 0;
-   var greetedNames={};
-   var greetMessage = "";
+  // should return the greeting
+  function greet(language, name){
 
-  function greet(name, language){
+    if(namesGreeted[name] === undefined){
+      noOfGreetings++;
+      namesGreeted[name]= 0;
+    }
+
       if(language == "english"){
-        greetMessage = "Hello, "+ name;
+        return "Hello, "+ name;
       }else if (language == "isixhosa") {
-        greetMessage = "Molo, "+ name;
+        return "Molo, "+ name;
       }else if (language == "afrikaans") {
-        greetMessage = "Hallo, "+ name;
+        return "Hallo, "+ name;
       }
-  }
 
-  function getGreetMessage(){
-    return greetMessage;
-  }
-
-  function updateCounter(noOfGreets){
-     greetingsNo = noOfGreets;
-  }
-
-  function updateGreetedNames(nameGreeted){
-    greetedNames = nameGreeted;
   }
 
   function checkGreetings(){
-    return greetingsNo;
+    return noOfGreetings;
   }
 
   function checkGreetedNames(){
-    return greetedNames;
+    return namesGreeted;
   }
-
 
   return {
     greetNeighbour : greet,
-    checkgreetMessage : getGreetMessage,
-    updateGreets : updateCounter,
     checkGreets : checkGreetings,
-    addGreetedName : updateGreetedNames,
     getGreetedNames : checkGreetedNames
-
   }
 
 }
 
+//var greet  = Greet(getPeopleGreetedFromStorage());
 var greet  = Greet();
+var greetsNo = greet.checkGreets();
+noOfGreetsDispElem.innerHTML = greetsNo
+
 function greetClicked(){
 
   var name = nameInputFiled.value
   var checkedRadioBtn = document.querySelector("input[name='language']:checked");
   if(checkedRadioBtn != null && name != ""){
 
-  if(namesGreeted[name] === undefined){
-    noOfGreetings++;
-    namesGreeted[name]= 0;
-    }
-
-      greet.updateGreets(noOfGreetings);
+    var selectedLanguage = checkedRadioBtn.value;
+    var greetMessage = greet.greetNeighbour(selectedLanguage, name);
 
     var greetsNo = greet.checkGreets();
-    greet.addGreetedName(namesGreeted);
     var greetedNamesObj = greet.getGreetedNames();
-
-    var selectedLanguage = checkedRadioBtn.value;
-    greet.greetNeighbour(name, selectedLanguage);
-    var greetMessage = greet.checkgreetMessage();
+    console.log(greetsNo)
+    console.log(greetedNamesObj)
     greetingDispElem.innerHTML = greetMessage;
-    namesGreeted = greetedNamesObj;
+    /*namesGreeted = greetedNamesObj;
     noOfGreetings = greetsNo;
     localStorage['noOfGreetings'] = noOfGreetings;
-    localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted));
-    noOfGreetsDispElem.innerHTML = noOfGreetings;
+    localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted)); */
+    noOfGreetsDispElem.innerHTML = greetsNo;
     nameInputFiled.value = "";
   }else{
     nameInputFiled.value = "";
@@ -107,12 +94,15 @@ function greetClicked(){
 }
 
 function resetCounterClicked(){
-  noOfGreetings = 0;
-  namesGreeted = {};
-  localStorage['noOfGreetings'] = noOfGreetings;
-  localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted));
-  nameInputFiled.value = "";
-  noOfGreetsDispElem.value= noOfGreetings;
+  var greet = Greet();
+  /*localStorage['noOfGreetings'] = noOfGreetings;
+  localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted));*/
+  var greetsNo = greet.checkGreets();
+  var greetedNamesObj = greet.getGreetedNames();
+  console.log(greetsNo)
+  console.log(greetedNamesObj)
+  nameInputFiled.innerHTML = "";
+  noOfGreetsDispElem.innerHTML= greetsNo;
 
 }
 
