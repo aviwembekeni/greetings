@@ -4,31 +4,10 @@ var greetBtn = document.querySelector(".greetBtn");
 var noOfGreetsDispElem = document.querySelector(".noOfGreets");
 var resetCounterBtn = document.querySelector(".reset-counter");
 
-/*var noOfGreetings = 0;
-var namesGreeted = {};
-
-if (localStorage['noOfGreetings']){
-
-    noOfGreetings = Number(localStorage['noOfGreetings']);
-
-}
-
-if (localStorage['namesGreeted']){
-
-    var retrieved = localStorage.getItem('namesGreeted');
-    namesGreeted =JSON.parse(retrieved);
-
-}
-
-noOfGreetsDispElem.innerHTML = noOfGreetings;*/
-
-
 function Greet(peopleGreeted){
    var noOfGreetings = peopleGreeted? Object.keys(peopleGreeted).length : 0;
    var namesGreeted = peopleGreeted || {} ;
-   //var greetMessage = "";
 
-  // should return the greeting
   function greet(language, name){
 
     if(namesGreeted[name] === undefined){
@@ -62,10 +41,20 @@ function Greet(peopleGreeted){
 
 }
 
-//var greet  = Greet(getPeopleGreetedFromStorage());
-var greet  = Greet();
+function getPeopleGreetedFromStorage(){
+    var namesGreeted = {};
+  if (localStorage['namesGreeted']){
+
+    var retrieved = localStorage.getItem('namesGreeted');
+     namesGreeted =JSON.parse(retrieved);
+  }
+
+  return namesGreeted;
+}
+
+var greet  = Greet(getPeopleGreetedFromStorage());
 var greetsNo = greet.checkGreets();
-noOfGreetsDispElem.innerHTML = greetsNo
+noOfGreetsDispElem.innerHTML = greetsNo;
 
 function greetClicked(){
 
@@ -81,12 +70,11 @@ function greetClicked(){
     console.log(greetsNo)
     console.log(greetedNamesObj)
     greetingDispElem.innerHTML = greetMessage;
-    /*namesGreeted = greetedNamesObj;
-    noOfGreetings = greetsNo;
-    localStorage['noOfGreetings'] = noOfGreetings;
-    localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted)); */
+    localStorage.setItem('namesGreeted', JSON.stringify(greetedNamesObj));
     noOfGreetsDispElem.innerHTML = greetsNo;
     nameInputFiled.value = "";
+    localStorage.setItem('namesGreeted', JSON.stringify(greetedNamesObj));
+
   }else{
     nameInputFiled.value = "";
     noOfGreetsDispElem.value= "";
@@ -94,11 +82,11 @@ function greetClicked(){
 }
 
 function resetCounterClicked(){
-  var greet = Greet();
-  /*localStorage['noOfGreetings'] = noOfGreetings;
-  localStorage.setItem('namesGreeted', JSON.stringify(namesGreeted));*/
+  greet = Greet();
+
   var greetsNo = greet.checkGreets();
   var greetedNamesObj = greet.getGreetedNames();
+  localStorage.setItem('namesGreeted', JSON.stringify(greetedNamesObj));
   console.log(greetsNo)
   console.log(greetedNamesObj)
   nameInputFiled.innerHTML = "";
